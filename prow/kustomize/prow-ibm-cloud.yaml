@@ -1203,11 +1203,11 @@ stringData:
   service-account.json: |
     {
       "region": "minio",
-      "access_key": "minio",
+      "access_key": "$(minio-access-key)",
       "endpoint": "minio.prow.svc.cluster.local",
       "insecure": true,
       "s3_force_path_style": true,
-      "secret_key": "minio123"
+      "secret_key": "$(minio-secret-key)"
     }
 ---
 apiVersion: v1
@@ -1219,11 +1219,11 @@ stringData:
   service-account.json: |
     {
       "region": "minio",
-      "access_key": "minio",
+      "access_key": "$(minio-access-key)",
       "endpoint": "minio.prow.svc.cluster.local",
       "insecure": true,
       "s3_force_path_style": true,
-      "secret_key": "minio123"
+      "secret_key": "$(minio-secret-key)"
     }
 ---
 apiVersion: apps/v1
@@ -1269,9 +1269,9 @@ spec:
         - /data
         env:
         - name: MINIO_ACCESS_KEY
-          value: "minio"
+          value: "$(minio-access-key)"
         - name: MINIO_SECRET_KEY
-          value: "minio123"
+          value: "$(minio-secret-key)"
         - name: MINIO_REGION_NAME
           value: minio
         ports:

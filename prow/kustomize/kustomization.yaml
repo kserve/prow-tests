@@ -12,6 +12,8 @@ configMapGenerator:
   - hmac-token=
   - prow-ingress=
   - ingress-tls-secret=
+  - minio-access-key=
+  - minio-secret-key=
 generatorOptions:
   disableNameSuffixHash: true
 vars:
@@ -43,5 +45,19 @@ vars:
     apiVersion: v1
   fieldref:
     fieldpath: data.ingress-tls-secret
+- name: minio-access-key
+  objref:
+    kind: ConfigMap
+    name: prow-parameters
+    apiVersion: v1
+  fieldref:
+    fieldpath: data.minio-access-key
+- name: minio-secret-key
+  objref:
+    kind: ConfigMap
+    name: prow-parameters
+    apiVersion: v1
+  fieldref:
+    fieldpath: data.minio-secret-key
 configurations:
 - params.yaml
