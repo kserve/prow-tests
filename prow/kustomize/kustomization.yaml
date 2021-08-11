@@ -1,0 +1,47 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- config.yaml
+- plugins.yaml
+- prow-ibm-cloud.yaml
+configMapGenerator:
+- name: prow-parameters
+  literals:
+  # Update the credentials for the below fields before apply.
+  - github-token=
+  - hmac-token=
+  - prow-ingress=
+  - ingress-tls-secret=
+generatorOptions:
+  disableNameSuffixHash: true
+vars:
+- name: github-token
+  objref:
+    kind: ConfigMap
+    name: prow-parameters
+    apiVersion: v1
+  fieldref:
+    fieldpath: data.github-token
+- name: hmac-token
+  objref:
+    kind: ConfigMap
+    name: prow-parameters
+    apiVersion: v1
+  fieldref:
+    fieldpath: data.hmac-token
+- name: prow-ingress
+  objref:
+    kind: ConfigMap
+    name: prow-parameters
+    apiVersion: v1
+  fieldref:
+    fieldpath: data.prow-ingress
+- name: ingress-tls-secret
+  objref:
+    kind: ConfigMap
+    name: prow-parameters
+    apiVersion: v1
+  fieldref:
+    fieldpath: data.ingress-tls-secret
+configurations:
+- params.yaml
