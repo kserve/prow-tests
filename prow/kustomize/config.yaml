@@ -56,6 +56,11 @@ data:
     tide:
       merge_method:
         kserve: squash
+      merge_commit_template:
+        kserve/prow-tests:
+          title: "{{ .Title }} (#{{ .Number }})"
+          body: |
+            {{ .Body }}
       queries:
       - labels:
         - lgtm
@@ -68,5 +73,4 @@ data:
         orgs:
         - kserve
       target_url: https://$(prow-ingress)/tide
-
     decorate_all_jobs: true
