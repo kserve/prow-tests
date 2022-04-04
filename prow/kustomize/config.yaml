@@ -73,5 +73,4 @@ data:
         orgs:
         - kserve
       target_url: https://$(prow-ingress)/tide
-
     decorate_all_jobs: true
