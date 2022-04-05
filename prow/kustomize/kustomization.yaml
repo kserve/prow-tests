@@ -4,6 +4,10 @@ resources:
 - config.yaml
 - plugins.yaml
 - prow-ibm-cloud.yaml
+images:
+  - name: gcr.io/k8s-prow/tide
+    newName: pvaneckw/tide
+    newTag: v20220329-v1.0.4
 configMapGenerator:
 - name: prow-parameters
   literals:

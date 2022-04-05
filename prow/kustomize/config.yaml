@@ -61,6 +61,74 @@ data:
           title: "{{ .Title }} (#{{ .Number }})"
           body: |
             {{ .Body }}
+
+            {{- $signedAuthors := .NormalizeSignedOffBy -}}
+            {{- if $signedAuthors -}}{{- "\n\n" -}}{{- end -}}
+            {{- range $index, $author := $signedAuthors -}}
+              {{- if $index -}}{{- "\n" -}}{{- end -}}
+              {{- "Signed-off-by:" }} {{ .Name }} <{{- .Email -}}>
+            {{- end -}}
+
+            {{- $coAuthors := .NormalizeCoAuthorBy -}}
+            {{- if $coAuthors -}}{{- "\n\n" -}}{{- end -}}
+            {{- range $index, $author := $coAuthors -}}
+              {{- if $index -}}{{- "\n" -}}{{- end -}}
+              {{- "Co-authored-by:" }} {{ .Name }} <{{- .Email -}}>
+            {{- end -}}
+        kserve/modelmesh-serving:
+          title: "{{ .Title }} (#{{ .Number }})"
+          body: |
+            {{ .Body }}
+
+            {{- $signedAuthors := .NormalizeSignedOffBy -}}
+            {{- if $signedAuthors -}}{{- "\n\n" -}}{{- end -}}
+            {{- range $index, $author := $signedAuthors -}}
+              {{- if $index -}}{{- "\n" -}}{{- end -}}
+              {{- "Signed-off-by:" }} {{ .Name }} <{{- .Email -}}>
+            {{- end -}}
+
+            {{- $coAuthors := .NormalizeCoAuthorBy -}}
+            {{- if $coAuthors -}}{{- "\n\n" -}}{{- end -}}
+            {{- range $index, $author := $coAuthors -}}
+              {{- if $index -}}{{- "\n" -}}{{- end -}}
+              {{- "Co-authored-by:" }} {{ .Name }} <{{- .Email -}}>
+            {{- end -}}
+        kserve/modelmesh:
+          title: "{{ .Title }} (#{{ .Number }})"
+          body: |
+            {{ .Body }}
+
+            {{- $signedAuthors := .NormalizeSignedOffBy -}}
+            {{- if $signedAuthors -}}{{- "\n\n" -}}{{- end -}}
+            {{- range $index, $author := $signedAuthors -}}
+              {{- if $index -}}{{- "\n" -}}{{- end -}}
+              {{- "Signed-off-by:" }} {{ .Name }} <{{- .Email -}}>
+            {{- end -}}
+
+            {{- $coAuthors := .NormalizeCoAuthorBy -}}
+            {{- if $coAuthors -}}{{- "\n\n" -}}{{- end -}}
+            {{- range $index, $author := $coAuthors -}}
+              {{- if $index -}}{{- "\n" -}}{{- end -}}
+              {{- "Co-authored-by:" }} {{ .Name }} <{{- .Email -}}>
+            {{- end -}}
+        kserve/modelmesh-runtime-adapter:
+          title: "{{ .Title }} (#{{ .Number }})"
+          body: |
+            {{ .Body }}
+
+            {{- $signedAuthors := .NormalizeSignedOffBy -}}
+            {{- if $signedAuthors -}}{{- "\n\n" -}}{{- end -}}
+            {{- range $index, $author := $signedAuthors -}}
+              {{- if $index -}}{{- "\n" -}}{{- end -}}
+              {{- "Signed-off-by:" }} {{ .Name }} <{{- .Email -}}>
+            {{- end -}}
+
+            {{- $coAuthors := .NormalizeCoAuthorBy -}}
+            {{- if $coAuthors -}}{{- "\n\n" -}}{{- end -}}
+            {{- range $index, $author := $coAuthors -}}
+              {{- if $index -}}{{- "\n" -}}{{- end -}}
+              {{- "Co-authored-by:" }} {{ .Name }} <{{- .Email -}}>
+            {{- end -}}
       queries:
       - labels:
         - lgtm
