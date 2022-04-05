@@ -40,3 +40,8 @@ Secret: $(hmac-token) in manifests
 SSL verification: Enable
 Which events would you like to trigger this webhook?: Send me everything.
 ```
+
+# Custom Tide Image
+
+The tide image used is a custom built one based on [this fork](https://github.com/ti-community-infra/test-infra) by the TiDB community.
+We use this for additional functionality for customizing commit messages as outlined [here](https://github.com/ti-community-infra/tichi/blob/master/docs/en/components/tide.md#custom-commit-message-template).
